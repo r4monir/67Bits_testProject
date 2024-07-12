@@ -16,9 +16,18 @@ public class Player : Person
 
     private void Start()
     {
+        SetEvents();
+
         _childsCapacity = _startChildsCapacity;
+
         UpdateCapacity(1);
         ChangeColor(0);
+    }
+
+    void SetEvents()
+    {
+        GameManager.Instance.Status.OnAddLvl += UpdateCapacity;
+        GameManager.Instance.Status.OnAddLvl += ChangeColor;
     }
 
     private void Update()

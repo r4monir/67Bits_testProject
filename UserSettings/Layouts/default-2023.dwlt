@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -241,7 +241,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1212
     y: 0
-    width: 235
+    width: 170
     height: 644
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
@@ -265,9 +265,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1447
+    x: 1382
     y: 0
-    width: 473
+    width: 538
     height: 644
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 97
+  controlID: 147
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -815,9 +815,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -6.622872, y: -10.993706, z: -3.7790322}
+    m_Target: {x: -6.9027567, y: -7.587984, z: -0.54735184}
     speed: 2
-    m_Value: {x: -6.622872, y: -10.993706, z: -3.7790322}
+    m_Value: {x: -6.9027567, y: -7.587984, z: -0.54735184}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -867,9 +867,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.35182345, y: 0.13163944, z: -0.05007532, w: 0.9254101}
   m_Size:
-    m_Target: 22.37282
+    m_Target: 25.055056
     speed: 2
-    m_Value: 22.37282
+    m_Value: 25.055056
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1010,7 +1010,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1212
     y: 73
-    width: 233
+    width: 168
     height: 623
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1026,20 +1026,20 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: e8faffffd05b0000e85b00003a5c0000945c0000
+      m_SelectedIDs: dc980000
+      m_LastClickedID: 39132
+      m_ExpandedIDs: 0c48ffff5e48ffffce4affff32c3ffff84c3ffffeec5ffffd2faffffa65c0000be5c0000da70000080710000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: bgMoney
-        m_OriginalName: bgMoney
+        m_Name: Child(Clone)
+        m_OriginalName: Child(Clone)
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 23622
+        m_UserData: -25300
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -1074,9 +1074,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1447
+    x: 1382
     y: 73
-    width: 472
+    width: 537
     height: 623
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1096,7 +1096,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 401
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -1124,10 +1124,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Project Settings\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1447
+    x: 1382
     y: 73
-    width: 472
-    height: 696
+    width: 537
+    height: 623
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1142,7 +1142,7 @@ MonoBehaviour:
   m_PosLeft: {x: 0, y: 0}
   m_PosRight: {x: 0, y: 0}
   m_Scope: 1
-  m_SplitterFlex: 0.05571031
+  m_SplitterFlex: 0
   m_SearchText: 
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
@@ -1214,7 +1214,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/App/Scripts/Person
+    - Assets/App/Prefabs
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1224,16 +1224,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/App/Scripts/Person
+  - Assets/App/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\nears\OneDrive\Documentos\My Projects\_UNITY\_PROJETOS\_OUTROS\67Bits_test\Prog\67Bits_testProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 82}
-    m_SelectedIDs: 2c5f0000
-    m_LastClickedID: 24364
-    m_ExpandedIDs: 00000000ee5e0000f05e0000f25e0000f45e0000f65e00000a5f00000e5f000000ca9a3bffffff7f
+    m_SelectedIDs: ce5f0000
+    m_LastClickedID: 24526
+    m_ExpandedIDs: 00000000b85f0000ba5f0000bc5f0000be5f0000c05f0000d25f000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1261,7 +1261,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ee5e0000f05e0000f25e0000f45e0000f65e0000
+    m_ExpandedIDs: 00000000b85f0000ba5f0000bc5f0000be5f0000c05f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

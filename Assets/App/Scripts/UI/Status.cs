@@ -6,9 +6,13 @@ public class Status : MonoBehaviour
 {
     private int _lvl;
     public int Lvl { get => _lvl; }
+    public delegate void OnAddLvlEventHandler(int value);
+    public event OnAddLvlEventHandler OnAddLvl;
 
     private int _money;
     public int Money { get => _money; }
+    public delegate void OnAddMoneyEventHandler(int value);
+    public event OnAddMoneyEventHandler OnAddMoney;
 
     private void Start()
     {
@@ -18,7 +22,8 @@ public class Status : MonoBehaviour
     public void AddMoney(int value)
     {
         _money = _money + value;
-        GameManager.Instance.Hud.SetMoney(_money);
+
+        OnAddMoney?.Invoke(_money);
     }
 
     public void AddLvl()
@@ -26,10 +31,9 @@ public class Status : MonoBehaviour
         _lvl += 50;
 
         int realLvl = (int)(_lvl / 100);
-        GameManager.Instance.Player.UpdateCapacity(realLvl);
-        GameManager.Instance.Player.ChangeColor(realLvl);
 
-        GameManager.Instance.Hud.SetLvl(_lvl);
+        OnAddLvl?.Invoke(realLvl);
+
         AddMoney(-GameManager.Instance.Hud.HormonePrice);
     }
 

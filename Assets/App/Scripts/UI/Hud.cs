@@ -28,6 +28,17 @@ public class Hud : MonoBehaviour
 
     [SerializeField] private float _fillLoadTime = 2;
 
+    void Start()
+    {
+        SetEvents();
+    }
+
+    void SetEvents()
+    {
+        GameManager.Instance.Status.OnAddLvl += SetLvl;
+        GameManager.Instance.Status.OnAddMoney += SetMoney;
+    }
+
     // Mostra money na Hud
     public void SetMoney(int value)
     {
@@ -40,7 +51,6 @@ public class Hud : MonoBehaviour
         if (_imgLvl.fillAmount == 0) _imgLvl.fillAmount = 0.5f;
         else _imgLvl.fillAmount = 0;
 
-        value = (int)(value / 100);
         _txtLvl.text = $"LEVEL {value}";
     }
 

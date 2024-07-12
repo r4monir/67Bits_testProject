@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Vector2 _spawnTime;
     [SerializeField] private Vector2 _spawnPos;
     [SerializeField] private int _childLimit = 20;
-    private int _childCount;
+    private int _childCount = 1;
 
 
     private void Start()
@@ -23,8 +23,8 @@ public class Spawner : MonoBehaviour
 
     IEnumerator CoroutineSpawnChild()
     {
-        if (_childCount < _childLimit)
-        { // Caso tenha menos inimigos que o limite
+        if (_childCount < _childLimit) // Caso tenha menos criancas que o limite
+        { 
             Spawn(_child);
             AddChildCount(1);
         }
@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
         SpawnChild();
     }
 
-    // Update contador de inimigos
+    // Update contador de criancas
     public void AddChildCount(int value)
     {
         _childCount = _childCount + value;
