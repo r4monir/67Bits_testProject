@@ -41,7 +41,7 @@ public class Child : Person
         Move();
     }
 
-    void Move()
+    public override void Move()
     {
         if (_isRagdoll) return; // Não movimenta caso esteja em modo Ragdoll
 

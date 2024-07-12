@@ -43,7 +43,7 @@ public class Player : Person
         _childsParent.position = new Vector3(transform.position.x, _childsParentPosY, transform.position.z);
     }
 
-    void Move()
+    public override void Move()
     {
         _rb.velocity = new Vector3(GameManager.Instance.Hud.Joystick.Horizontal * _moveSpeed, 0, GameManager.Instance.Hud.Joystick.Vertical * _moveSpeed);
 
