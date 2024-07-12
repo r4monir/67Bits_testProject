@@ -2,60 +2,82 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPooler : MonoBehaviour {
+public class ObjectPooler : MonoBehaviour
+{
 
-	public Dictionary<string, Queue<GameObject>> dic_pool = new Dictionary<string, Queue<GameObject>> ();
+    Dictionary<string, Queue<GameObject>> _objsPool = new Dictionary<string, Queue<GameObject>>();
+    Dictionary<GameObject, Coroutine> _recyclerCoroutines = new Dictionary<GameObject, Coroutine>(); // Dicionário para controlar as coroutines de reciclagem
 
-	public GameObject SpawnFromPool (GameObject gObj, Vector3 position, Quaternion rotation, Transform parent = null) {
-		string tag_gObj = gObj.name;
+    public GameObject SpawnFromPool(GameObject go, Vector3 position, Quaternion rotation, Transform parent = null)
+    {
+        string tagGO = go.name;
+        GameObject GOToSpawn = null;
 
-		GameObject gObjToSpawn = null;
+        if (!_objsPool.ContainsKey(tagGO))
+        {
+            GOToSpawn = NewGameObjectToPool(tagGO, go, position, rotation, parent);
+        }
+        else
+        {
+            GOToSpawn = _objsPool[tagGO].Peek();
 
-		if (!dic_pool.ContainsKey (tag_gObj)) {
-			gObjToSpawn = NewGameObjectToPool (tag_gObj, gObj, position, rotation, parent);
-		} else {
-			gObjToSpawn = dic_pool[tag_gObj].Peek ();
+            if (GOToSpawn.activeSelf)
+            {
+                GOToSpawn = NewGameObjectToPool(tagGO, go, position, rotation, parent);
+            }
+            else
+            {
+                GOToSpawn = _objsPool[tagGO].Dequeue();
 
-			if (gObjToSpawn.activeSelf) {
-				gObjToSpawn = NewGameObjectToPool (tag_gObj, gObj, position, rotation, parent);
-			} else {
-				gObjToSpawn = dic_pool[tag_gObj].Dequeue ();
+                if (parent != null) GOToSpawn.transform.SetParent(parent);
 
-				if (parent != null) gObjToSpawn.transform.SetParent (parent);
+                GOToSpawn.transform.position = position;
+                GOToSpawn.transform.rotation = rotation;
 
-				gObjToSpawn.transform.position = position;
-				gObjToSpawn.transform.rotation = rotation;
+                GOToSpawn.SetActive(true);
+            }
+        }
+        _objsPool[tagGO].Enqueue(GOToSpawn);
 
-				gObjToSpawn.SetActive (true);
-			}
-		}
+        return GOToSpawn;
+    }
 
-		dic_pool[tag_gObj].Enqueue (gObjToSpawn);
+    GameObject NewGameObjectToPool(string tagGO, GameObject go, Vector3 position, Quaternion rotation, Transform parent = null)
+    {
+        GameObject newGO = Instantiate(go, position, rotation, parent);
 
-		return gObjToSpawn;
-	}
+        if (!_objsPool.ContainsKey(tagGO))
+        {
+            Queue<GameObject> gObjPool = new Queue<GameObject>();
 
-	GameObject NewGameObjectToPool (string tag_gObj, GameObject gObj, Vector3 position, Quaternion rotation, Transform parent = null) {
-		GameObject gObj_new = Instantiate (gObj, position, rotation, parent);
+            gObjPool.Enqueue(newGO);
 
-		if (!dic_pool.ContainsKey (tag_gObj)) {
-			Queue<GameObject> gObjPool = new Queue<GameObject> ();
+            _objsPool.Add(tagGO, gObjPool);
+        }
 
-			gObjPool.Enqueue (gObj_new);
+        return newGO;
+    }
 
-			dic_pool.Add (tag_gObj, gObjPool);
-		}
+    public void Recycle(GameObject go, float time = 0)
+    {
+        if (time == 0)
+        {
+            go.SetActive(false);
+            return;
+        }
+		
+        if (_recyclerCoroutines.ContainsKey(go))
+        {
+            StopCoroutine(_recyclerCoroutines[go]);
+        }
 
-		return gObj_new;
-	}
+		Coroutine recyclerCoroutine = StartCoroutine(CoroutineRecycle(go, time));
+        _recyclerCoroutines[go] = recyclerCoroutine;
+    }
 
-	public void Recicle (GameObject obj, float time = 0) {
-		StartCoroutine(Coroutine_Recicle(obj, time));
-	}
-
-	IEnumerator Coroutine_Recicle(GameObject obj, float time = 0){
-		yield return new WaitForSeconds(time);
-		obj.SetActive(false);
-	}
-
+    IEnumerator CoroutineRecycle(GameObject go, float time = 0)
+    {
+        yield return new WaitForSeconds(time);
+        go.SetActive(false);
+    }
 }
