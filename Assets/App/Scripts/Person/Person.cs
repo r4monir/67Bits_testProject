@@ -5,8 +5,8 @@ using UnityEngine;
 public class Person : MonoBehaviour
 {
     [Header("Person")]
-    [SerializeField] protected Rigidbody rb;
-    [SerializeField] protected float moveSpeed;
-    [SerializeField] protected float turnSpeed;
-    [SerializeField] protected Animator animator;
+    [SerializeField] protected Rigidbody _rb;
+    [SerializeField] protected float _moveSpeed;
+    [SerializeField] protected float _turnSpeed = 10;
+    [SerializeField] protected Animator _animator;
 }

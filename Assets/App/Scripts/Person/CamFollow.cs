@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CamFollow : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private Vector3 offset; // A distância da câmera em relação ao objeto
+    [SerializeField] private Transform _target;
+    [SerializeField] private Vector3 _offset; // A distância da câmera em relação ao objeto
 
     void LateUpdate()
     {
-        transform.position = target.position + offset;
+        transform.position = _target.position + _offset;
     }
 }

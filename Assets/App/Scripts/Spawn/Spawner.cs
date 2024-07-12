@@ -4,35 +4,38 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject Enemy;
-    [SerializeField] private Vector2 spawnTime;
-    [SerializeField] private Vector2 spawnPos;
-    [SerializeField] private int enemyLimit;
-    private int enemyCount;
-    
+    [SerializeField] private GameObject _child;
+    [SerializeField] private Vector2 _spawnTime;
+    [SerializeField] private Vector2 _spawnPos;
+    [SerializeField] private int _childLimit = 20;
+    private int _childCount;
+
 
     private void Start()
     {
-        SpawnEnemy();
+        SpawnChild();
     }
 
-    void SpawnEnemy(){
-        StartCoroutine(CoroutineSpawnEnemy());
-    }
-
-    IEnumerator CoroutineSpawnEnemy()
+    void SpawnChild()
     {
-        if (enemyCount < enemyLimit) { // Caso tenha menos inimigos que o limite
-            Spawn(Enemy);
-            AddEnemyCount(1);
+        StartCoroutine(CoroutineSpawnChild());
+    }
+
+    IEnumerator CoroutineSpawnChild()
+    {
+        if (_childCount < _childLimit)
+        { // Caso tenha menos inimigos que o limite
+            Spawn(_child);
+            AddChildCount(1);
         }
-        yield return new WaitForSeconds(Random.Range(spawnTime.x, spawnTime.y));
-        SpawnEnemy();
+        yield return new WaitForSeconds(Random.Range(_spawnTime.x, _spawnTime.y));
+        SpawnChild();
     }
 
     // Update contador de inimigos
-    public void AddEnemyCount(int value){
-        enemyCount = enemyCount + value;
+    public void AddChildCount(int value)
+    {
+        _childCount = _childCount + value;
     }
 
     void Spawn(GameObject obj)
@@ -46,11 +49,11 @@ public class Spawner : MonoBehaviour
     {
         var newPos = transform.position;
 
-        var variant = Random.Range(spawnPos.x, spawnPos.y);
+        var variant = Random.Range(_spawnPos.x, _spawnPos.y);
         newPos[0] = variant;
-        variant = Random.Range(spawnPos.x, spawnPos.y);
+        variant = Random.Range(_spawnPos.x, _spawnPos.y);
         newPos[2] = variant;
-        
+
         transform.position = newPos;
     }
 

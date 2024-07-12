@@ -10,19 +10,22 @@ public class Status : MonoBehaviour
     private int _money;
     public int Money { get => _money; }
 
-    private void Start() {
+    private void Start()
+    {
         _lvl = 100;
     }
 
-    public void AddMoney(int value){
+    public void AddMoney(int value)
+    {
         _money = _money + value;
         GameManager.Instance.Hud.SetMoney(_money);
     }
 
-    public void AddLvl(){
+    public void AddLvl()
+    {
         _lvl += 50;
 
-        int realLvl = (int) (_lvl / 100);
+        int realLvl = (int)(_lvl / 100);
         GameManager.Instance.Player.UpdateCapacity(realLvl);
         GameManager.Instance.Player.ChangeColor(realLvl);
 

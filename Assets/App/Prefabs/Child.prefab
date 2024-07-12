@@ -978,7 +978,7 @@ GameObject:
   - component: {fileID: 4095947660893357178}
   - component: {fileID: 4095947660893357182}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Child
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1060,13 +1060,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d40ce9899e49f24ca9a81d9c0f2a6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 4095947660893357178}
-  moveSpeed: 2
-  turnSpeed: 10
-  animator: {fileID: 5911309345808538498}
-  tansformAvatar: {fileID: 4285704634732532862}
-  mainBoxC: {fileID: 4095947660893357181}
-  timeChangeDirection: 3
+  _rb: {fileID: 4095947660893357178}
+  _moveSpeed: 2
+  _turnSpeed: 10
+  _animator: {fileID: 5911309345808538498}
+  _tansformAvatar: {fileID: 4285704634732532862}
+  _mainBoxC: {fileID: 4095947660893357181}
+  _timeChangeDirection: 3
 --- !u!1 &4176998911918215892
 GameObject:
   m_ObjectHideFlags: 0
